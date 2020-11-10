@@ -1,0 +1,60 @@
+
+\RequirePackage{xcolor}
+\RequirePackage{lastpage}
+\RequirePackage{rotating}
+
+\RequirePackage{wallpaper}
+
+\definecolor{wmGreen}{RGB}{17,87,64}
+\definecolor{wmGold}{RGB}{185,151,91}
+
+\CenterWallPaper{1}{icssSlide.png}
+\usepackage[%
+  papersize={12.8cm,9.6cm},
+  hmargin=0.8cm,%
+  vmargin=1.5cm,%
+  head=0.2cm,% might be changed later
+  headsep=0pt,%
+  foot=0.5cm% might be changed later
+  ]{geometry}% http://ctan.org/pkg/geometry
+
+\setlength{\headheight}{0cm}
+\setlength{\parindent}{0cm} % Default is 15pt.
+
+\newcounter{nextpage}
+\newcommand{\mynextpage}{\setcounter{nextpage}{\thepage}\addtocounter{nextpage}{1}\thenextpage}
+
+\newcounter{previouspage}
+\newcommand{\mypreviouspage}{\setcounter{previouspage}{\thepage}\addtocounter{previouspage}{-1}\thepreviouspage}
+
+% normal slide
+\newenvironment{slide}[1]
+{
+\begin{figure}%[!htb]
+\begin{minipage}[c]{\linewidth}
+\begin{Large}
+\vspace*{-0.5cm} \textcolor{wmGreen}{#1}   
+\end{Large}
+\end{minipage} %\hfill
+\end{figure}
+\vspace{0.0cm}
+\begin{center}
+\begin{minipage}{0.95\linewidth}
+\begin{small}
+}
+{
+\end{small}
+\end{minipage}
+\end{center}
+
+\begin{textblock*}{\linewidth}(1cm,9.1cm)
+\begin{scriptsize}
+\textcolor{black}   \thepage / \textcolor{wmGreen}{\pageref{LastPage}}
+\end{scriptsize}
+\end{textblock*}
+\pagebreak
+}
+
+\pagestyle{empty}
+
+\usepackage[absolute,overlay]{textpos}
